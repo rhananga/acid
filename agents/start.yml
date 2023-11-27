@@ -28,8 +28,12 @@ jobs:
     displayName: Start ${{ parameters.agentDescription }} agent
     dependsOn: ${{ parameters.dependsOn }}
     condition: ${{ parameters.condition }}
+    # pool:
+    #   vmImage: ubuntu-20.04
     pool:
-      vmImage: ubuntu-20.04
+      name: ondemand-agent-pool
+      demand: 
+        - Agent.Name - equals agent-poc
     variables:
       - group: agentManager
       - name: acidDir
